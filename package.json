@@ -21,6 +21,7 @@
     "gulp-rename": "1.2.2"
   },
   "dependencies": {
+    "debounce": "^1.0.0",
     "midi": "^0.9.5",
     "node-omxplayer": "^0.4.1",
     "promise": "^7.1.1"
