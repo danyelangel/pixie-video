@@ -19,6 +19,7 @@ var Player = function () {
 
     // Open the first available input port. 
     input.openPort(0);
+    console.log('heyy');
   }
 
   _createClass(Player, [{
