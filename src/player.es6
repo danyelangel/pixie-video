@@ -5,18 +5,16 @@ class Player {
 
     this.debounce = debounce;
     
-    
-
     // Configure a callback. 
-    input.on('message', debouncedHandler());
+    input.on('message', this.debouncedHandler());
 
     // Open the first available input port. 
     input.openPort(0);
   }
-  debouncedHandler(deltaTime, message) {
+  debouncedHandler() {
     return this.debounce((deltaTime, message) => {
       if ((message[0]-128)/16 > 0) {
-        runVideo((59 - message[1]));
+        this.runVideo((59 - message[1]));
       }
     }, 100);
   }
