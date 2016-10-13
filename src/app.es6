@@ -3,12 +3,6 @@ var midi = require('midi');
 // Set up a new input. 
 var input = new midi.input();
  
-// Count the available input ports. 
-console.log(input.getPortCount());
- 
-// Get the name of a specified input port. 
-input.getPortName(0);
- 
 // Configure a callback. 
 input.on('message', function(deltaTime, message) {
   // The message is an array of numbers corresponding to the MIDI bytes: 
