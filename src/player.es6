@@ -10,10 +10,10 @@ class Player {
 
     // Open the first available input port. 
     input.openPort(0);
-    console.log(input);
   }
   debouncedHandler() {
     return this.debounce((deltaTime, message) => {
+      console.log(message);
       if ((message[0]-128)/16 > 0) {
         this.runVideo((59 - message[1]));
       }
