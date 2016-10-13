@@ -19,6 +19,7 @@ class Player {
     }, 100);
   }
   runVideo(channel) {
+    console.log(channel);
     if (this.player) {
       this.player.stop();
       this.player = null;
@@ -26,8 +27,8 @@ class Player {
     if (this.channel !== channel) {
       this.player = this.Omx(`clip${channel}.mp4`);
       this.player.play();
-      this.channel = channel;
     }
+    this.channel = channel;
   }
 }
 
