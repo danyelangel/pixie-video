@@ -3,8 +3,6 @@
       plumber = require('gulp-plumber'),
       rename = require('gulp-rename'),
       babel = require('gulp-babel'),
-      concat = require('gulp-concat'),
-      jshint = require('gulp-jshint'),
       nodemon = require('gulp-nodemon');
 
   gulp.task('server', function() {
