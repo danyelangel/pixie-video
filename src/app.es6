@@ -21,4 +21,4 @@ input.on('message', function(deltaTime, message) {
 // Open the first available input port. 
 input.openPort(0);
 
-module.exports = fb;
+module.exports = input;
