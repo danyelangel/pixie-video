@@ -4,6 +4,7 @@ class Player {
     let input = new midi.input();
 
     this.debounce = debounce;
+    this.Omx = Omx;
     
     // Configure a callback. 
     input.on('message', this.debouncedHandler());
