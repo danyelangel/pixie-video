@@ -1,31 +1,20 @@
 class Player {
-  constructor(debounce, keypress, Omx) {
+  constructor(debounce, midi, Omx, robot) {
 
-    // use decoration to enable stdin to start sending ya events
-    keypress(process.stdin);
-    // listen for the "keypress" event
-    process.stdin.on('keypress', function (ch, key) {
-        console.log('got "keypress"', key);
-        if (key && key.ctrl && key.name == 't') {
-          console.log('plop');
-        }
+    // Set up a new input.
+    var input = new midi.input();
+
+    this.debounce = debounce;
+    this.Omx = Omx;
+    console.log('ready');
+    // Configure a callback.
+    input.on('message', (deltaTime, message) => {
+      console.log(message);
+      // this.debouncedHandler()(deltaTime, message);
     });
 
-
-//    // Set up a new input.
-//    var input = new midi.input();
-//
-//    this.debounce = debounce;
-//    this.Omx = Omx;
-//    console.log('ready');
-//    // Configure a callback.
-//    input.on('message', (deltaTime, message) => {
-//      console.log(message);
-//      // this.debouncedHandler()(deltaTime, message);
-//    });
-
-//    // Open the first available input port.
-//    input.openPort(0);
+    // Open the first available input port.
+    input.openPort(0);
   }
   debouncedHandler() {
     return this.debounce((deltaTime, message) => {

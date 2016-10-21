@@ -1,6 +1,7 @@
-var keypress = require('keypress');
+var midi = require('midi');
 var debounce = require('debounce');
 var Omx = require('node-omxplayer');
-var Player = require('./player');
+var Player = require('./player'),
+    robot = require("robotjs");
 
-module.exports = new Player(debounce, keypress, Omx);
+module.exports = new Player(debounce, midi, Omx, robot);
