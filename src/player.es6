@@ -13,7 +13,7 @@ class Player {
     });
 
     // Open the first available input port. 
-    input.openPort(1);
+    input.openPort(0);
   }
   debouncedHandler() {
     return this.debounce((deltaTime, message) => {
