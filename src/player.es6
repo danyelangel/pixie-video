@@ -5,7 +5,7 @@ class Player {
 
     this.debounce = debounce;
     this.Omx = Omx;
-    
+    console.log('ready');
     // Configure a callback. 
     input.on('message', (deltaTime, message) => {
       console.log(message);
