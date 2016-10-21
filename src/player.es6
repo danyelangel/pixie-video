@@ -1,21 +1,22 @@
 class Player {
   constructor(debounce, midi, Omx) {
     // Set up a new input. 
-    let input = new midi.input();
+    var input = new midi.input();
 
     this.debounce = debounce;
     this.Omx = Omx;
     
     // Configure a callback. 
-    input.on('message', this.debouncedHandler());
+    input.on('message', (deltaTime, message) => {
+      console.log(message);
+      this.debouncedHandler()(deltaTime, message);
+    });
 
     // Open the first available input port. 
-    input.openPort(0);
-    console.log('heyy');
+    input.openPort(1);
   }
   debouncedHandler() {
     return this.debounce((deltaTime, message) => {
-      console.log(message);
       if ((message[0]-128)/16 > 0) {
         this.runVideo((59 - message[1]));
       }

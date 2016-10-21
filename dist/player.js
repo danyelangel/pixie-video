@@ -6,6 +6,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var Player = function () {
   function Player(debounce, midi, Omx) {
+    var _this = this;
+
     _classCallCheck(this, Player);
 
     // Set up a new input. 
@@ -15,22 +17,23 @@ var Player = function () {
     this.Omx = Omx;
 
     // Configure a callback. 
-    input.on('message', this.debouncedHandler());
+    input.on('message', function (deltaTime, message) {
+      console.log(message);
+      _this.debouncedHandler()(deltaTime, message);
+    });
 
     // Open the first available input port. 
     input.openPort(0);
-    console.log('heyy');
   }
 
   _createClass(Player, [{
     key: 'debouncedHandler',
     value: function debouncedHandler() {
-      var _this = this;
+      var _this2 = this;
 
       return this.debounce(function (deltaTime, message) {
-        console.log(message);
         if ((message[0] - 128) / 16 > 0) {
-          _this.runVideo(59 - message[1]);
+          _this2.runVideo(59 - message[1]);
         }
       }, 100);
     }
