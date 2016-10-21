@@ -1,5 +1,5 @@
 class Player {
-  constructor(debounce, midi, Omx, robot) {
+  constructor(debounce, midi, Omx) {
 
     // Set up a new input.
     var input = new midi.input();
