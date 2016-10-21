@@ -5,23 +5,33 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Player = function () {
-  function Player(debounce, midi, Omx) {
+  function Player(debounce, keypress, Omx) {
     _classCallCheck(this, Player);
 
-    // Set up a new input. 
-    var input = new midi.input();
-
-    this.debounce = debounce;
-    this.Omx = Omx;
-    console.log('ready');
-    // Configure a callback. 
-    input.on('message', function (deltaTime, message) {
-      console.log(message);
-      // this.debouncedHandler()(deltaTime, message);
+    // use decoration to enable stdin to start sending ya events
+    keypress(process.stdin);
+    // listen for the "keypress" event
+    process.stdin.on('keypress', function (ch, key) {
+      console.log('got "keypress"', key);
+      if (key && key.ctrl && key.name == 't') {
+        console.log('plop');
+      }
     });
 
-    // Open the first available input port. 
-    input.openPort(0);
+    //    // Set up a new input.
+    //    var input = new midi.input();
+    //
+    //    this.debounce = debounce;
+    //    this.Omx = Omx;
+    //    console.log('ready');
+    //    // Configure a callback.
+    //    input.on('message', (deltaTime, message) => {
+    //      console.log(message);
+    //      // this.debouncedHandler()(deltaTime, message);
+    //    });
+
+    //    // Open the first available input port.
+    //    input.openPort(0);
   }
 
   _createClass(Player, [{
