@@ -17,9 +17,11 @@ class Player {
     input.openPort(1);
   }
   debouncedHandler() {
+    let videoId;
     return this.debounce((deltaTime, message) => {
       if ((message[0]-128)/16 > 0) {
-        this.runVideo((59 - message[1]));
+        videoId = 59 - message[1];
+        this.runVideo(videoId);
       }
     }, 100);
   }
