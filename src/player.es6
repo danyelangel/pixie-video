@@ -28,7 +28,9 @@ class Player {
     }, 100);
   }
   runVideo(channel) {
-    console.log(`Stopped ${this.channel}`);
+    if (this.channel) {
+      console.log(`Stopped ${this.channel}`);
+    }
     if (this.channel !== channel) {
       this.channel = channel;
       console.log(`Started ${this.channel}`);
