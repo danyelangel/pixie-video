@@ -9,7 +9,6 @@ class Player {
     console.log(input.getPortName(1));
     // Configure a callback.
     input.on('message', (deltaTime, message) => {
-      console.log(message);
       this.debouncedHandler()(deltaTime, message);
     });
 
@@ -27,15 +26,15 @@ class Player {
   }
   runVideo(channel) {
     console.log(channel);
-    if (this.player) {
-      this.player.stop();
-      this.player = null;
-    }
-    if (this.channel !== channel) {
-      this.player = this.Omx(`clip${channel}.mp4`);
-      this.player.play();
-    }
-    this.channel = channel;
+//    if (this.player) {
+//      this.player.stop();
+//      this.player = null;
+//    }
+//    if (this.channel !== channel) {
+//      this.player = this.Omx(`clip${channel}.mp4`);
+//      this.player.play();
+//    }
+//    this.channel = channel;
   }
 }
 
