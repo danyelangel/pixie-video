@@ -10,7 +10,7 @@ class Player {
     // Configure a callback.
     input.on('message', (deltaTime, message) => {
       console.log(message);
-      // this.debouncedHandler()(deltaTime, message);
+      this.debouncedHandler()(deltaTime, message);
     });
 
     // Open the first available input port.
