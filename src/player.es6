@@ -6,7 +6,7 @@ class Player {
 
     this.debounce = debounce;
     this.Omx = Omx;
-    console.log('ready');
+    console.log(input.getPortName(0));
     // Configure a callback.
     input.on('message', (deltaTime, message) => {
       console.log(message);
