@@ -6,7 +6,7 @@ class Player {
 
     this.debounce = debounce;
     this.Omx = Omx;
-    console.log(input.getPortName(1));
+    console.log(input.getPortName(1) + ' ready');
     // Configure a callback.
     input.on('message', (deltaTime, message) => {
       this.debouncedHandler()(deltaTime, message);
@@ -14,6 +14,9 @@ class Player {
 
     // Open the first available input port.
     input.openPort(1);
+
+    this.isPlaying = false;
+    this.channel = null;
   }
   debouncedHandler() {
     let videoId;
@@ -25,11 +28,16 @@ class Player {
     }, 100);
   }
   runVideo(channel) {
-    console.log(channel);
-//    if (this.player) {
-//      this.player.stop();
-//      this.player = null;
-//    }
+    console.log(`Stopped ${this.channel}`);
+    if (this.channel !== channel) {
+      this.channel = channel;
+      console.log(`Started ${this.channel}`);
+    } else {
+      this.channel = null;
+    }
+
+
+
 //    if (this.channel !== channel) {
 //      this.player = this.Omx(`clip${channel}.mp4`);
 //      this.player.play();
