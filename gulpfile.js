@@ -30,6 +30,5 @@
       .pipe(gulp.dest('dist/'));
   });
 
-  gulp.task('default', ['scripts', 'server'], function () {
-  });
+  gulp.task('default', ['scripts', 'server']);
 }());

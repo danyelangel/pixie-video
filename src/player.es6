@@ -43,20 +43,26 @@ class Player {
   }
   prepareVideos(number) {
     this.omx.setVideosExtension('.mp4');
-    this.omx.setVideosDirectory('/home/pi/videos/');
+    this.omx.setVideosDirectory('/home/pi/');
     this.omxVideos = [];
     for(let i = 0; i < number; i++) {
-      this.omxVideos[i] = this.omx.create('TRACK' + i);
+      if (i = 1) {
+        this.omxVideos[i] = this.omx.create('TRACK' + i);
+      }
     }
   }
   playVideo(channel) {
     if (this.channel) {
-      this.omxVideos[this.channel].stop();
+      if (this.omxVideos[this.channel].stop) {
+        this.omxVideos[this.channel].stop();
+      }
       console.log(`Stopped ${this.channel}`);
     }
     if (this.channel !== channel) {
       this.channel = channel;
-      this.omxVideos[this.channel].start();
+      if (this.omxVideos[this.channel].start) {
+        this.omxVideos[this.channel].start();
+      }
       console.log(`Started ${this.channel}`);
     } else {
       this.channel = null;
