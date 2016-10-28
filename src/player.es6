@@ -7,9 +7,7 @@ class Player {
       this.prepareVideos(6);
       console.log('Videos Loaded');
     }, endpointId => {
-      console.log('plop2');
       if (endpointId < 6) {
-        console.log('plop');
         this.playVideo(endpointId);
       }
     });
@@ -27,7 +25,6 @@ class Player {
 
     // Configure a callback.
     input.on('message', (deltaTime, message) => {
-      console.log('plop3');
       this.debouncedHandler(endpointId => {
         callback(endpointId);
       })(deltaTime, message);
@@ -61,14 +58,14 @@ class Player {
   }
   playVideo(channel) {
     if (this.channel) {
-      if (this.omxVideos[this.channel].stop) {
+      if (this.omxVideos[this.channel] && this.omxVideos[this.channel].stop) {
         this.omxVideos[this.channel].stop();
       }
       console.log(`Stopped ${this.channel}`);
     }
     if (this.channel !== channel) {
       this.channel = channel;
-      if (this.omxVideos[this.channel].start) {
+      if (this.omxVideos[this.channel] && this.omxVideos[this.channel].start) {
         this.omxVideos[this.channel].start();
       }
       console.log(`Started ${this.channel}`);
