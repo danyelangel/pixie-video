@@ -2,6 +2,7 @@ class Player {
   constructor(debounce, midi, omx) {
     this.midi = midi;
     this.debounce = debounce;
+    this.omx = omx;
     this.prepareVideos(6);
     this.listenMidi(endpointId => {
       if (endpointId < 6) {
