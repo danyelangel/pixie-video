@@ -47,7 +47,7 @@ class Player {
     this.omxVideos = [];
     for(let i = 0; i < number; i++) {
       if (i = 1) {
-        this.omxVideos[i] = this.omx.create('TRACK' + i);
+        this.omxVideos[i] = this.omx.create('track' + i);
       }
     }
   }
