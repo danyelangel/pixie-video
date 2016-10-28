@@ -65,8 +65,8 @@ class Player {
     }
     if (this.channel !== channel) {
       this.channel = channel;
-      if (this.omxVideos[this.channel] && this.omxVideos[this.channel].start) {
-        this.omxVideos[this.channel].start();
+      if (this.omxVideos[this.channel] && this.omxVideos[this.channel].play) {
+        this.omxVideos[this.channel].play();
         console.log(`Started ${this.channel}`);
       }
     } else {
