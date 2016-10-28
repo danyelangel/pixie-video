@@ -60,15 +60,15 @@ class Player {
     if (this.channel) {
       if (this.omxVideos[this.channel] && this.omxVideos[this.channel].stop) {
         this.omxVideos[this.channel].stop();
+        console.log(`Stopped ${this.channel}`);
       }
-      console.log(`Stopped ${this.channel}`);
     }
     if (this.channel !== channel) {
       this.channel = channel;
       if (this.omxVideos[this.channel] && this.omxVideos[this.channel].start) {
         this.omxVideos[this.channel].start();
+        console.log(`Started ${this.channel}`);
       }
-      console.log(`Started ${this.channel}`);
     } else {
       this.channel = null;
     }
