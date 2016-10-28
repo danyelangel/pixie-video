@@ -18,6 +18,8 @@ class Player {
     // Set up a new input.
     var input = new this.midi.input();
 
+    ready();
+
     console.log(input.getPortName(1) + ' ready');
 
     // Open the first available input port.
