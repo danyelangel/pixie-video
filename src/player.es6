@@ -5,6 +5,7 @@ class Player {
     this.omx = omx;
     this.listenMidi(() => {
       this.prepareVideos(6);
+      console.log('Videos Loaded');
     }, endpointId => {
       console.log('plop2');
       if (endpointId < 6) {
@@ -17,9 +18,8 @@ class Player {
     // Set up a new input.
     var input = new this.midi.input();
 
-    console.log(input.getPortName(0) + ' ready');
+    console.log(input.getPortName(1) + ' ready');
     // Configure a callback.
-    ready();
     input.on('message', (deltaTime, message) => {
       console.log('plop3');
       this.debouncedHandler(endpointId => {
@@ -32,6 +32,8 @@ class Player {
 
     this.isPlaying = false;
     this.channel = null;
+
+    ready();
   }
   debouncedHandler(callback) {
     let endpointId;
