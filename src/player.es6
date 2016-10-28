@@ -5,7 +5,7 @@ class Player {
     this.omx = omx;
     this.listenMidi(() => {
       this.prepareVideos(6);
-    })(endpointId => {
+    }, endpointId => {
       console.log('plop2');
       if (endpointId < 6) {
         console.log('plop');
@@ -13,27 +13,25 @@ class Player {
       }
     });
   }
-  listenMidi(ready) {
+  listenMidi(ready, callback) {
     // Set up a new input.
     var input = new this.midi.input();
 
     console.log(input.getPortName(1) + ' ready');
     // Configure a callback.
     ready();
-    return callback => {
-      input.on('message', (deltaTime, message) => {
-        console.log('plop3');
-        this.debouncedHandler(endpointId => {
-          callback(endpointId);
-        })(deltaTime, message);
-      });
+    input.on('message', (deltaTime, message) => {
+      console.log('plop3');
+      this.debouncedHandler(endpointId => {
+        callback(endpointId);
+      })(deltaTime, message);
+    });
 
-      // Open the first available input port.
-      input.openPort(1);
+    // Open the first available input port.
+    input.openPort(1);
 
-      this.isPlaying = false;
-      this.channel = null;
-    };
+    this.isPlaying = false;
+    this.channel = null;
   }
   debouncedHandler(callback) {
     let endpointId;
