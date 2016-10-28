@@ -6,6 +6,7 @@ class Player {
     this.listenMidi(() => {
       this.prepareVideos(6);
     })(endpointId => {
+      console.log('plop2');
       if (endpointId < 6) {
         console.log('plop');
         this.playVideo(endpointId);
@@ -21,6 +22,7 @@ class Player {
     ready();
     return callback => {
       input.on('message', (deltaTime, message) => {
+        console.log('plop3');
         this.debouncedHandler(endpointId => {
           callback(endpointId);
         })(deltaTime, message);
