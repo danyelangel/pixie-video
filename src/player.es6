@@ -17,7 +17,7 @@ class Player {
     // Set up a new input.
     var input = new this.midi.input();
 
-    console.log(input.getPortName(1) + ' ready');
+    console.log(input.getPortName(0) + ' ready');
     // Configure a callback.
     ready();
     input.on('message', (deltaTime, message) => {
