@@ -7,6 +7,7 @@ class Player {
       this.prepareVideos(6);
     })(endpointId => {
       if (endpointId < 6) {
+        console.log('plop');
         this.playVideo(endpointId);
       }
     });
