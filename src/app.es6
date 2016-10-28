@@ -1,6 +1,8 @@
 var midi = require('midi');
 var debounce = require('debounce');
-var Omx = require('node-omxplayer');
+var OmxManager = require('omx-manager');
 var Player = require('./player');
 
-module.exports = new Player(debounce, midi, Omx);
+var omx = new OmxManager();
+
+module.exports = new Player(debounce, midi, omx);
