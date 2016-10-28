@@ -19,6 +19,10 @@ class Player {
     var input = new this.midi.input();
 
     console.log(input.getPortName(1) + ' ready');
+
+    // Open the first available input port.
+    input.openPort(1);
+
     // Configure a callback.
     input.on('message', (deltaTime, message) => {
       console.log('plop3');
@@ -27,8 +31,7 @@ class Player {
       })(deltaTime, message);
     });
 
-    // Open the first available input port.
-    input.openPort(1);
+
 
     this.isPlaying = false;
     this.channel = null;
