@@ -3,30 +3,34 @@ class Player {
     this.midi = midi;
     this.debounce = debounce;
     this.omx = omx;
-    this.prepareVideos(6);
-    this.listenMidi(endpointId => {
+    this.listenMidi(() => {
+      this.prepareVideos(6);
+    })(endpointId => {
       if (endpointId < 6) {
         this.playVideo(endpointId);
       }
     });
   }
-  listenMidi(callback) {
+  listenMidi(ready) {
     // Set up a new input.
     var input = new this.midi.input();
 
     console.log(input.getPortName(1) + ' ready');
     // Configure a callback.
-    input.on('message', (deltaTime, message) => {
-      this.debouncedHandler(endpointId => {
-        callback(endpointId);
-      })(deltaTime, message);
-    });
+    ready();
+    return callback => {
+      input.on('message', (deltaTime, message) => {
+        this.debouncedHandler(endpointId => {
+          callback(endpointId);
+        })(deltaTime, message);
+      });
 
-    // Open the first available input port.
-    input.openPort(1);
+      // Open the first available input port.
+      input.openPort(1);
 
-    this.isPlaying = false;
-    this.channel = null;
+      this.isPlaying = false;
+      this.channel = null;
+    };
   }
   debouncedHandler(callback) {
     let endpointId;
