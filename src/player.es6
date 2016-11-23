@@ -52,6 +52,7 @@ class Player {
     this.omxVideos = [];
     for(let i = 0; i < number; i++) {
       this.omxVideos[i] = this.omx.create('/home/pi/track' + i + '.mp4');
+      console.log(this.omxVideos);
       this.omxVideos[i].on('play', () => {
         this.canPlay = false;
       });
