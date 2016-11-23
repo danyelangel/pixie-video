@@ -52,24 +52,16 @@ class Player {
     this.omxVideos = [];
     for(let i = 0; i < number; i++) {
       this.omxVideos[i] = this.omx.create('/home/pi/track' + i + '.mp4');
+      this.omxVideos[i].on('play', () => {
+        this.canPlay = false;
+      });
+      this.omxVideos[i].on('stop', () => {
+        this.canPlay = true;
+      });
     }
   }
   playVideo(channel) {
-    if (this.channel) {
-      if (this.omxVideos[this.channel] && this.omxVideos[this.channel].stop) {
-        this.omxVideos[this.channel].stop();
-        console.log(`Stopped ${this.channel}`);
-      }
-    }
-    if (this.channel !== channel) {
-      this.channel = channel;
-      if (this.omxVideos[this.channel] && this.omxVideos[this.channel].play) {
-        this.omxVideos[this.channel].play();
-        console.log(`Started ${this.channel}`);
-      }
-    } else {
-      this.channel = null;
-    }
+    this.omxVideos[this.channel].play();
   }
 }
 
