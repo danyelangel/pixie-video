@@ -51,7 +51,9 @@ class Player {
     //this.omx.setVideosDirectory('/home/pi/');
     this.omxVideos = [];
     for(let i = 0; i < number; i++) {
-      this.omxVideos[i] = this.omx.create('/home/pi/track' + i + '.mp4');
+      this.omxVideos[i] = this.omx.create('/home/pi/track' + i + '.mp4', {
+        '-o': 'local'
+      });
       this.omxVideos[i].on('play', () => {
         this.canPlay = false;
       });
@@ -62,7 +64,9 @@ class Player {
   }
   playVideo(channel) {
     console.log(channel);
-    this.omxVideos[channel].play();
+    if (this.canPlay) {
+      this.omxVideos[channel].play();
+    }
   }
 }
 
