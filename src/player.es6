@@ -58,6 +58,9 @@ class Player {
       this.omxVideos[i].on('stop', () => {
         this.canPlay = true;
       });
+      this.omxVideos[i].on('end', () => {
+        this.canPlay = true;
+      });
     }
     this.canPlay = true;
   }
