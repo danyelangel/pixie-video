@@ -63,7 +63,9 @@ class Player {
   playVideo(channel) {
     console.log(channel);
     console.log(this.omxVideos[this.channel]);
-    this.omxVideos[this.channel].play();
+    if (this.omxVideos[this.channel].play) {
+      this.omxVideos[this.channel].play();
+    }
   }
 }
 
