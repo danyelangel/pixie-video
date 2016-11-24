@@ -4,10 +4,10 @@ class Player {
     this.debounce = debounce;
     this.omx = omx;
     this.listenMidi(() => {
-      this.prepareVideos(6);
+      this.prepareVideos(7);
       console.log('Videos Loaded');
     }, endpointId => {
-      if (endpointId < 6) {
+      if (endpointId < 7) {
         this.playVideo(endpointId);
       }
     });
